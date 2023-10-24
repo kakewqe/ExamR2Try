@@ -1,19 +1,20 @@
 #include <unistd.h>
 
-int main(int ac, char **av)
+int main(int argc, char **argv)
 {
+    int i;
+    i = 0;
+    char *str;
 
-    int i = 0;
-    if (ac == 2)
-    {
-        while (av[1][i])
-            i++;
-        while(i >= 0)
-        { 
-            write(1, &av[1][i], 1);
-            i--;
-        }
-    }   
-    write(1, "\n", 1);
-
+    if (argc == 2)
+    {    
+        str = argv[1];
+            while(str[i])
+                i++;
+            while(i >= 0)
+                write(1, &str[i--], 1);    
+            write(1, "\n", 1);
+    }
+  
+    
 }
