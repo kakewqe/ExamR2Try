@@ -2,7 +2,7 @@
 
 int check_str(char *str, char c)
 {
-    while(*str)
+    while (*str)
     {
         if (*str == c)
             return 1;
@@ -11,44 +11,36 @@ int check_str(char *str, char c)
     return 0;
 }
 
+#include <unistd.h>
+
 int main(int ac, char **av)
 {
-    char *str = NULL;
-    char strsp[] = {0};
-    int i;
-    int j;
+    int i, j;
+    char check_bool[256]= {0};
 
-    if (ac == 2)
+    if (ac == 3)
     {
-            j = 0;
-            i = 0;
-            
-            while (av[1][i])
+        i = 0;
+        while (av[1][i])
+        {
+            if (!check_bool[(unsigned char)av[1][i]])
             {
-                if(!strsp[(unsigned char)av[1][i]]) 
-                {
-                    str[j] = av[1][i];
-                    write(1, &str[j], 1);
-                    strsp[(unsigned char)av[1][i]] = 1;
-                }
-                j++;
-                i++;
+                write(1, &av[1][i], 1);
+                check_bool[(unsigned char)av[1][i]] = 1;
             }
-            
-            i = 0;
-            while (av[2][i])
+            i++;
+        }
+        j = 0;
+        while (av[2][j])
+        {
+            if (!check_bool[(unsigned char)av[2][j]])
             {
-                while (*str)
-                {
-                    if (check_str(&av[2][i], *str) && !strsp[(unsigned char)av[2][i]])
-                    {
-                          str[j] = av[2][i];
-                        write(1, &str[j], 1);
-                        strsp[(unsigned char)av[2][i]] = 1;
-                    }
-                    j++;
-                    i++;
-                }
+                write(1, &av[2][j], 1);
+                check_bool[(unsigned char)av[2][j]] = 1;
             }
+            j++;
+        }
     }
+    write(1, "\n", 1);
+    return (0);
 }

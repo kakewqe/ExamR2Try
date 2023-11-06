@@ -1,6 +1,6 @@
 #include <unistd.h>
 
-int dejaronc(char *str, char c)
+int check_str(char *str, char c)
  {
     int i = 0;
     while (str[i]) 
@@ -16,7 +16,7 @@ int main(int ac, char **av)
 {
     int i = 0;
     int j;
-    char strcheck[256] = {0};
+    char char_bool[256] = {0};
 
 
     if (ac == 3)
@@ -26,9 +26,9 @@ int main(int ac, char **av)
                 j = 0;
                 while(av[2][j])
                 {
-                    if (!strcheck[(unsigned char)av[1][i]] && dejaronc(av[2], av[1][i]))
+                    if (!char_bool[(unsigned char)av[1][i]] && check_str(av[2], av[1][i]))
                         write(1, &av[1][i], 1);
-                    strcheck[(unsigned char)av[1][i]] = 1; 
+                    char_bool[(unsigned char)av[1][i]] = 1; 
                     break;
                 }
                 i++;
