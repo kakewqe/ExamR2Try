@@ -25,8 +25,8 @@ char *ft_strpbrk(const char *s1, const char *s2)
 
 int main(void)
 {
-    char *s1 = "bon1jours";
-    char *s2 = "mew1qweqrj";
+    char *s1 = "bonjours";
+    char *s2 = "1324u";
     char *s3 =  NULL;
     
     s3 = ft_strpbrk(s1, s2);
