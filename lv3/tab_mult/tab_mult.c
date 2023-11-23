@@ -3,7 +3,7 @@
 int ft_atoi(char *str)
 {
     int i = 0;
-    int resultat;
+    int resultat = 0;
 
     while(str[i])
     {
@@ -15,33 +15,38 @@ int ft_atoi(char *str)
 
 }
 
-char ft_putnbr(int nb)
+void ft_putnbr(int nb)
 {   
     char digite;
-    char affichenb;
         if (nb >= 10)
             ft_putnbr(nb / 10);
-        return (nb % 10 + '0');  
+        digite = nb % 10 + '0';
+        write(1, &digite, 1);
 }
-/*
-int tab(int count, int value)
-{}
-*/
 
 int main(int ac, char **av)
 {
     unsigned int count = 1;
-    unsigned value = ft_atoi(av[1]);
+    unsigned int value = 0;
     char countc;
+    char multi;
+    char afficheresulat;
     
-    while(count != 10)
+
+    if (ac != 2)
+         write(1, "\n", 1);
+    else
     {
-        countc = ft_putnbr(count);
-        write(1, &countc, 1);
-
-
-        count += 1;
-        write(1, "\n", 1);
+        value = ft_atoi(av[1]);
+        while(count < 10)
+        {
+            ft_putnbr(count);
+            write(1, " x ", 3);
+            ft_putnbr(value);
+            write(1, " = ", 3);
+            ft_putnbr(count * value);
+            count += 1;
+            write(1, "\n", 1);
+        }
     }
-
 }
