@@ -2,9 +2,7 @@
 #include <stdio.h>
 #include "flood_fill.h"
 
-
-
-
+/*
 char** make_area(char** zone, t_point size)
 {
 	char** new;
@@ -19,7 +17,7 @@ char** make_area(char** zone, t_point size)
 	}
 	return new;
 }
-
+*/
 
 void fill(char **tab,t_point size, int x, int y, char target)
 {
@@ -35,6 +33,7 @@ void fill(char **tab,t_point size, int x, int y, char target)
     fill(tab, size, x , y - 1, target);
 }
 
+
  void  flood_fill(char **tab, t_point size, t_point begin)
 {
     char target;
@@ -42,7 +41,7 @@ void fill(char **tab,t_point size, int x, int y, char target)
     fill(tab, size, begin.x, begin.y, target);
 }
 
-
+/*
 int main(void)
 {
     t_point size = {8, 5};
@@ -65,4 +64,4 @@ int main(void)
 	for (int i = 0; i < size.y; ++i)
 		printf("%s\n", area[i]);
 	return (0);
-}
+}*/
