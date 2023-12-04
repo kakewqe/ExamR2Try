@@ -1,34 +1,41 @@
 #include <stdio.h>
 
-int	ft_atoi_base(const char *str, int str_base)
+int ft_atoi_base(const char *str, int str_base)
 {
     int i = 0;
-    int res = 0;
-    int sg = 1;
-    int deg = 0;
-    
-    if (str[i] == '-')  
-    {    
-        sg = -1;
-        i++;
-    }
+    int result = 0;
+    int sign = 1;
+    int digit;
 
-    while(str[i])
+    // Vérification de la validité de la base
+    if (str_base < 2 || str_base > 16) 
+        return 0; 
+    if (str[i] == '-')
     {
-
-        if (str[i] >= '0' && str[i] <= '9')
-            deg = str[i] - '0';
-        else if (str[i] >= 'a' && str[i] <= 'z')
-            deg = 10 + str[i] - 'a';
-        else if (str[i] >= 'A' && str[i] <= 'Z')
-            deg = 10 + str[i] - 'A';
-        else 
-            return 0;
-
-        res = res * str_base + deg;
+        sign = -1;
         i++;
     }
-    return (res * sg);
+
+    // Conversion de la chaîne en entier
+    while (str[i])
+    {
+        // Vérification des caractères valides
+        if ((str[i] >= '0' && str[i] <= '9') || (str[i] >= 'a' && str[i] <= 'f') || (str[i] >= 'A' && str[i] <= 'F'))
+        {
+            if (str[i] >= '0' && str[i] <= '9')
+                digit = str[i] - '0';
+            else if (str[i] >= 'a' && str[i] <= 'f')
+                digit = 10 + str[i] - 'a';
+            else if (str[i] >= 'A' && str[i] <= 'F')
+                digit = 10 + str[i] - 'A';
+            result = result * str_base + digit;
+        }
+        else
+            return 0; 
+        i++;
+    }
+
+    return result * sign;
 }
 
 int main() 
