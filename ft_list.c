@@ -22,25 +22,24 @@ void print_list(t_list *list)
     printf("\n");
 }
 
-t_list *last_elem(t_list *list)
+t_list last_list(t_list *list)
 {
-    while (list->next)
-        list = list->next;
+    while(t_list)
+        list->next;
     return (list);
-}
+} 
 
 void addlastlist(t_list **list, t_list *new)
 {
-    t_list *last;
-    
-    if(*list != NULL)
+    if(!new)
     {
-        last = last_elem(*list);
-        last->next = new;
-        new->next = NULL; 
+        new = last_list(list);
+        new->next = NULL;
     }
     else
-        *list = new;   
+        *list = new;
+
+
 }
 
 void addfront(t_list **list, t_list *new)

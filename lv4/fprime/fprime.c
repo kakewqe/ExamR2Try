@@ -32,9 +32,7 @@ int main(int ac, char **av)
             int nb = atoi(av[1]);
             int i = 2;
             if (nb == 1)
-                
                 printf("1");
-                //write(1, "1", 1);
             else
             {
                 while(i<= nb)

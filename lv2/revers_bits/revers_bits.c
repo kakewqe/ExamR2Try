@@ -33,7 +33,7 @@ unsigned char reverse_bits(unsigned char octet)
     }
     return res;
 }
-
+/*
 int main() 
 {
     unsigned char octet = 38;
@@ -48,3 +48,4 @@ int main()
 
     return 0;
 }
+*/

@@ -20,7 +20,7 @@ int	ft_atoi_base(const char *str, int str_base)
             deg = str[i] - '0';
         else if (str[i] >= 'a' && str[i] <= 'z')
             deg = 10 + str[i] - 'a';
-        else if (str[i] >= 'A' && str[i] <= 'z')
+        else if (str[i] >= 'A' && str[i] <= 'Z')
             deg = 10 + str[i] - 'A';
         else 
             return 0;

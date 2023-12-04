@@ -1,24 +1,31 @@
 #include <stdio.h>
+#include <unistd.h>
 
-int		max(unsigned int *tab, unsigned int len)
-{   
-    unsigned int i = 0;
-    unsigned res;
-
-    if (len == 0)
+int		max(int* tab, unsigned int len)
+{
+    if (tab == NULL || len == 0)    
         return 0;
+
+  	int max = tab[0]; 
+   	int i = 1;
+
     while (i < len)
     {
-        if(tab[i] < tab[i + 1])
-            res = tab[i + 1];
+        if (tab[i] > max)
+            max = tab[i];
         i++;
     }
-    return (res);
+    return max;
 }
 
+/*
 int main(void)
 {
-    unsigned int tab[]={100,112,123,15,231,90000};
+	int tab[]={1, 11, -3, 25};
+	int maxi = max(tab, 4);
 
-    printf("%d", max(tab, 2));
+	printf("%d\n", maxi);
+	return (0);
 }
+*/
+
